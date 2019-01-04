@@ -8,10 +8,12 @@ class ApiController < ApplicationController
     events = client.parse_events_from(body)
     events.each do |event|
       message = event.message['text'] || event.type
-      client.reply_message(event['replyToken'], message)
+      response = client.reply_message(event['replyToken'], message)
+      pp response
     end
     head :ok
-  rescue
+  rescue => e
+    pp e
     head :ok
   end
 
