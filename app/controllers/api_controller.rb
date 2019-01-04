@@ -7,7 +7,10 @@ class ApiController < ApplicationController
     body = request.body.read
     events = client.parse_events_from(body)
     events.each do |event|
-      message = event.message['text'] || event.type
+      message = {
+        type: 'text',
+        text: event.message['text'] || event.type
+      }
       response = client.reply_message(event['replyToken'], message)
       pp response
     end
