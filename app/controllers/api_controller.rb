@@ -9,7 +9,7 @@ class ApiController < ApplicationController
     events.each do |event|
       message = {
         type: 'text',
-        text: event.message['text'] || event.type
+        text: event.message['text']&.fake_chatbot || event.type
       }
       response = client.reply_message(event['replyToken'], message)
       pp response

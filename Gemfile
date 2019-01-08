@@ -62,3 +62,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "line-bot-api", "~> 1.3"
+
+gem "fake_chatbot", "~> 0.1.0"
